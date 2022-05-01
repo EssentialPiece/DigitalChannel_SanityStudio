@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": null,
   "license": "UNLICENSED",
   "scripts": {
     "start": "sanity start",
+    "deploy": "fly deploy --remote-only",
     "build": "sanity build"
   },
   "keywords": [
@@ -27,5 +27,7 @@
     "react-dom": "^17.0",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@sanity/cli": "^2.29.8"
+  }
 }

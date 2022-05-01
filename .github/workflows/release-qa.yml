@@ -1,0 +1,15 @@
+name: Deploy QA Sanity
+on: workflow_dispatch
+jobs:
+  sanity-deploy:
+    runs-on: ubuntu-18.04
+    name: Deploy Sanity dataset
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_STUDIO_API_DATASET: development
+        with:
+          args: deploy

@@ -1,0 +1,24 @@
+name: Deploy Production Sanity
+on: push
+jobs:
+  deploy:
+    name: Deploy Sanity UI
+    runs-on: ubuntu-latest
+    env:
+      SANITY_STUDIO_API_DATASET: production
+    steps:
+      - uses: actions/checkout@v2
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy ./studio --remote-only
+  sanity-deploy:
+    runs-on: ubuntu-18.04
+    name: Deploy Sanity dataset
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: sanity-io/github-action-sanity@v0.2-alpha
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+          SANITY_STUDIO_API_DATASET: production
+        with:
+          args: deploy
