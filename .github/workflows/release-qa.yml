@@ -1,5 +1,8 @@
 name: Deploy QA Sanity
 on: workflow_dispatch
+defaults:
+ run:
+  working-directory: ./studio
 jobs:
   sanity-deploy:
     runs-on: ubuntu-18.04

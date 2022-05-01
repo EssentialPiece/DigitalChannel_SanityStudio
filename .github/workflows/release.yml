@@ -4,6 +4,10 @@ on: push
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   SANITY_STUDIO_API_DATASET: production
+
+defaults:
+ run:
+  working-directory: ./studio
 jobs:
   deploy:
     name: Deploy Sanity UI
@@ -11,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy ./studio --remote-only
+      - run: flyctl deploy --remote-only
   sanity-deploy:
     runs-on: ubuntu-18.04
     name: Deploy Sanity dataset
@@ -19,7 +23,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: sanity-io/github-action-sanity@v0.2-alpha
-        working-directory: ./studio
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
         with:
