@@ -1,3 +1,6 @@
+#base static image
+FROM pierrezemb/gostatic as basestatic
+
 # base node image
 FROM node:16-bullseye-slim as base
 
@@ -34,16 +37,7 @@ ADD . .
 RUN npm run build
 
 # Finally, build the production image with minimal footprint
-FROM base
+FROM basestatic
 
-ENV NODE_ENV=production
-
-RUN mkdir /app
-WORKDIR /app
-
-COPY --from=production-deps /app/node_modules /app/node_modules
-
-COPY --from=build /app/dist /app/dist
+COPY --from=build /app/dist /srv/http/
 ADD . .
-
-CMD ["npm", "run", "start"]
