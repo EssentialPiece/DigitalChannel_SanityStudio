@@ -41,3 +41,5 @@ FROM basestatic
 
 COPY --from=build /app/dist /srv/http/
 ADD . .
+
+CMD ["--fallback", "index.html"]
