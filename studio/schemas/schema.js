@@ -7,7 +7,7 @@ import testimonial from './testimonial'
 import blog from './blog'
 import product from './product'
 import landingPageImage from './landingPageImage'
-import sponsors from './sponsors'
+import sponsors from './sponsor'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({

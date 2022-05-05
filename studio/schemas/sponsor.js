@@ -1,6 +1,6 @@
 export default{
-    title: 'Sponsors',
-    name: 'sponsors',
+    title: 'Sponsor',
+    name: 'sponsor',
     type: 'document',
     fields: [
       {

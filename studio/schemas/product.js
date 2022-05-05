@@ -2,12 +2,27 @@ export default{
     title: 'Product',
     name: 'product',
     type: 'document',
+    initialValue: {
+      productType: 'standard'
+    },
     fields: [
       {
-        //???
-        title: 'Single',
-        name: 'single',
-        type: 'string'
+        title: 'Product Type',
+        name: 'productType',
+        type: 'string',
+        options: {
+          list: [
+            {title: 'Standard', value: 'standard'},
+            {title: 'Monthly', value: 'monthly'}
+          ],
+          layout: 'dropdown'
+        }
+      },
+      {
+        title: 'Feature product',
+        name: 'feature',
+        type: 'boolean',
+        hidden: ({document}) => document?.productType != 'monthly'
       },
       {
         title: 'Title',
@@ -38,12 +53,6 @@ export default{
       {
         title: 'Short Description',
         name: 'shortDescription',
-        type: 'string'
-      },
-      {
-        //????
-        title: 'Monthly',
-        name: 'monthly',
         type: 'string'
       }
     ]
