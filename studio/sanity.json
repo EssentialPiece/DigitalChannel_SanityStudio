@@ -1,0 +1,39 @@
+{
+  "root": true,
+  "project": {
+    "name": "EssentialPiece"
+  },
+  "api": {
+    "projectId": "zb2uxjq6",
+    "dataset": "development"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/dashboard",
+    "@sanity/desk-tool",
+    "plausible-iframe"    
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "implements": "part:@sanity/base/root",
+      "path": "plugins/sanity-plugin-tutorial/CustomDefaultLayout"
+    },
+    { 
+      "implements": "part:@sanity/dashboard/config", 
+      "path": "./dashboardConfig.js" 
+    }
+  ]
+}
