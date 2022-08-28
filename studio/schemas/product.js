@@ -21,8 +21,7 @@ export default{
       {
         title: 'Feature product',
         name: 'feature',
-        type: 'boolean',
-        hidden: ({document}) => document?.productType != 'monthly'
+        type: 'boolean'
       },
       {
         title: 'Title',
@@ -48,7 +47,8 @@ export default{
       {
         title: 'Long Description',
         name: 'longDescription',
-        type: 'text'
+        type: 'array',
+        of: [{type: 'block'}]
       },
       {
         title: 'Short Description',
