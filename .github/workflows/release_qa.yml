@@ -1,4 +1,4 @@
-name: Deploy Production Sanity
+name: Deploy QA Sanity
 on:
   push:
     branches:
