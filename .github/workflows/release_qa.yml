@@ -1,0 +1,22 @@
+name: Deploy QA Sanity
+on:
+  push:
+    branches:
+      - dev
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+jobs:
+  deploy:
+    name: Deploy Sanity UI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jossef/action-set-json-field@v2
+        with:
+           file: ./studio/sanity.json
+           field: api.dataset
+           value: "development"
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy ./studio -c fly-qa.toml --remote-only
